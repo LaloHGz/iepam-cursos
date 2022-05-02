@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.88.1">
+  <title>LOGIN CON NODE JWT</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/signin.css" rel="stylesheet">
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body class="text-center">
+
+  <main class="form-signin text-center shadow-lg p-3 rounded-3">
+    <form id="formLogin" action="/login" method="post">
+      <img class="mb-4" src="img/iepam-logo-dark.png" alt="" width="auto" height="70">
+      <!-- <h1 class="h3 mb-3 fw-normal">Login</h1> -->
+
+      <div class="form-floating">
+        <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
+        <label for="email">Email</label>
+      </div>
+      <div class="form-floating">
+        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+        <label for="password">Contraseña</label>
+      </div>
+
+      <button class="w-100 btn btn-lg btn-primary" type="submit">Iniciar sesión</button>
+
+      <a href="/register" class="w-100 btn btn-lg btn-success mt-2" type="submit">Registrarse</a>
+
+    </form>
+  </main>
+
+  <% if(alert){ %>
+    <script>
+      Swal.fire({
+        title: '<%= alertTitle %>',
+        text: '<%= alertMessage %>',
+        icon: '<%= alertIcon %>',
+        showConfirmButton: <%= showConfirmButton %>,
+        timer:<%= timer %>
+      }).then(()=>{
+        window.location = '/<%=ruta%>';
+      });
+    </script>
+  <% }%>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+    
+<head>
+    <%- include('../views/partials/_head'); %>
+    <title>IEPAM Login</title>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+    
+    <!-- Login Section -->
+    <section id="login">
+        <img class="img-login" src="/img/img-login.jpg" alt="img-background-cerro">
+        <div class="center-items">
+            <a class="logo" href="">
+              <img class="iepam-logo" src="/img/iepam-logo.png" alt="logo-iepam">
+            </a>
+            <div>
+                <h1 class="mo-title-light">¡Hola de Nuevo! <br>Es bueno tenerte de vuelta</h1>
+            </div>
+            <hr>
+            <form class="forms" id="formLogin" action="/login" method="post">
+                <input class="mo-form-control  form-control form-control-lg" type="email" id="email" name="email" placeholder="Email">
+                <input class="mo-form-control  form-control form-control-lg" type="password" id="password" name="password" placeholder="Contraseña">
+                <div>
+                    <!-- TODO: hacer recuperador de contraseñas -->
+                    <!-- <a class="mo-link-dark " href="/html/password-recovery.html">Olvidé mi contraseña</a> -->
+                    <button class="btn-blue btn btn-default" type="submit" >Iniciar sesión</button>
+                    <a href="/register" class="btn btn-lg btn-gold" type="submit">Registrarse</a>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Sweet Alert script -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <% if(alert){ %>
+        <script>
+          Swal.fire({
+            title: '<%= alertTitle %>',
+            text: '<%= alertMessage %>',
+            icon: '<%= alertIcon %>',
+            showConfirmButton: <%= showConfirmButton %>,
+            timer:<%= timer %>
+          }).then(()=>{
+            window.location = '/<%=ruta%>';
+          });
+        </script>
+      <% }%>
+    
+</body>
+</html>

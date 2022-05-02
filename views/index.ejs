@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <title>Home</title>
+    <style>
+        body {
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cursos</h1>
+    <span class="pr-3">Usuario: </span>
+    <% if(user){%>
+        <span class="badge bg-success"><%= user.nombre %></span>
+    <%}%>
+    <a href="logout" class="pl-3 btn btn-danger" >Sign out</a>
+</body>
+</html>

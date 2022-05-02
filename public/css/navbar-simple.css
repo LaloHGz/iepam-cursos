@@ -1,0 +1,39 @@
+:root {
+    --primary: #004C8C;
+    --light: #EEEEEE;
+    --dark: #181818;
+    --gold: #ba7e45;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Raleway, sans-serif;
+}
+
+.container {
+    width: auto;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo {
+    margin: 0 auto;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    background-color: var(--light);
+    padding: 16px 20px;
+    border-bottom: 5px solid var(--gold);
+}
+
+@media (max-width: 768px) {
+
+}
