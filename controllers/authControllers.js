@@ -9,6 +9,9 @@ exports.register = async(req, res)=>{
         const email = req.body.email;
         const user = req.body.user;
         const pass = req.body.password;
+        //let passHash = await bcryptjs.hash(pass,8);
+        // console.log(passHash);
+
         if(!email || !user || !pass){
             res.render('register',{
                 alert: true,
@@ -20,8 +23,8 @@ exports.register = async(req, res)=>{
                 ruta: 'register'
             });
         }else{
-            conexion.query('SELECT correo FROM usuario WHERE correo = ?',[email], async(err, results)=>{
-                if(results[0].correo == email ){
+            conexion.query('SELECT * FROM usuario WHERE correo = ?',[email], async(error, results)=>{
+                if(results.length != 0){
                     res.render('register',{
                         alert: true,
                         alertTitle: 'Error',
@@ -34,11 +37,34 @@ exports.register = async(req, res)=>{
                 }else{
                     let passHash = await bcryptjs.hash(pass,8);
                     // console.log(passHash);
-                    conexion.query('INSERT INTO usuario SET ?', {nombre:user, correo:email, contrasena: passHash, permisos:0, foto:"https://cdn-icons-png.flaticon.com/512/456/456283.png"}, (err, results)=>{
+                    conexion.query('INSERT INTO usuario SET ?', {nombre:user, correo:email, contrasena: passHash, rol: "usuario", foto:"https://cdn-icons-png.flaticon.com/512/456/456283.png"}, (err, results)=>{
                         if(err){
                             console.log(err);
                         }
-                        res.redirect('/');
+                        //res.redirect('/');
+                    });
+                    conexion.query('SELECT * FROM usuario WHERE correo = ?',[email], async(err, resul)=>{
+                        // registro OK
+                        const id = resul[0].id_usuario;
+                        const token = jwt.sign({id:id}, process.env.JWT_SECRETO,{
+                            expiresIn: process.env.JWT_TIEMPO_EXPIRA
+                        });
+                        
+                        const cookiesOptions = {
+                            expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000),
+                            httpOnly: true
+                        };
+                        res.cookie('jwt', token, cookiesOptions);
+                        res.render('register',{
+                            alert: true,
+                            alertTitle: 'Bienvenido',
+                            alertMessage: 'Inicio de sesión exitoso',
+                            alertIcon: 'success',
+                            showConfirmButton: true,
+                            timer: 800,
+                            ruta: ''
+                        });
+
                     });
                 }
             });        
@@ -110,8 +136,11 @@ exports.isAuthenticated = async(req, res, next)=>{
             const decodificada = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRETO);
             conexion.query('SELECT * FROM usuario WHERE id_usuario = ?',[decodificada.id], (err, results)=>{
                 if(!results){return next();}
-                req.user = results[0];
-                return next();
+                conexion.query('SELECT * FROM curso', (err, availableCourses ) =>{
+                    req.user = results[0];
+                    req.courses = availableCourses;
+                    return next();
+                });
             });
         }catch(error){
             console.log(error);

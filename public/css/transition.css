@@ -1,0 +1,44 @@
+*, *::after, *::before {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+#loaderContainer {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    -webkit-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    z-index: 100;
+    background-color: rgb(73, 12, 151);
+}
+
+#mainLoader{
+    border: 15px solid #ba7e45;
+    border-top-color: #e1f5fece;
+    border-style: groove;
+    height: 10rem;
+    width: 10rem;
+    border-radius: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+
+   animation: turn 2s linear infinite 
+}
+
+
+@keyframes turn {
+    from{
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

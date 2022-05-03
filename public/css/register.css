@@ -1,0 +1,83 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+a { 
+  text-decoration: none;
+  color: white;
+}
+
+a:hover{
+  color: #a9a9a9;
+  text-decoration: none; 
+}
+
+.landingPhoto{
+  height: 30vh;
+}
+
+.landingPhoto .title { 
+  position: absolute;
+  z-index: 10;
+  width: 100vw;
+  height: 70px;  
+  margin-top: 3rem;
+}
+
+.landingPhoto .title h1 {
+  font-size: 3em;
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  color: rgb(255, 255, 255);
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+
+  position: relative;
+    top: 2.8rem;
+}
+
+.img-login{
+  top: -17rem;
+  z-index: -1;
+}
+
+.formsContainer{
+  position: absolute;
+  z-index: 10;
+  width: 100vw;
+  height: 62vh;
+  background-color: #e1f5fe;
+  top: 38vh;
+}
+
+.text-center {
+  display: grid;
+  justify-content: center;
+ 
+}
+
+.mo-text-dark {
+  color: black;
+  font-weight: bold;
+  font-style: italic;
+  list-style: none;
+}
+
+.mo-link-dark{
+  top: 0.5rem;
+  position: relative;
+}
+
+.mo-title-light{
+  color: black;
+  font-weight: bold ; 
+}
+
+@media (max-width: 768px){
+  .landingPhoto .title { 
+    margin-top: 0;
+    padding: 0 18px;
+  }
+}
