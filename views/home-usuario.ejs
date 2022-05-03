@@ -45,12 +45,11 @@
             <span class="badge bg-primary"><%= user.rol %></span>
         <%}%>
     <%}%>
-    <a href="logout" class="pl-3 btn btn-danger" >Sign out</a>
 
     <!-- Poner codigo para poner en automatico con for los cursos disponibles -->
     <section class="availableCurses">
         <div class="grid-layout">
-            <% if(data){%>
+        <% if(data){%>
                 <% for(var i = 0; i < data.length; i++){%>
                     <div class="course">
                         <a href="/courses/<%= data[i].id_curso %>">

@@ -64,7 +64,6 @@ exports.register = async(req, res)=>{
                             timer: 800,
                             ruta: ''
                         });
-
                     });
                 }
             });        
@@ -150,6 +149,8 @@ exports.isAuthenticated = async(req, res, next)=>{
         res.redirect('/login');
     }    
 };
+
+
 
 exports.logout = (req, res)=>{
     res.clearCookie('jwt');

@@ -23,6 +23,7 @@ router.get('/register', (req, res)=>{
 });
 
 
+
 // router para los métodos del controller
 router.post('/register', authController.register);
 router.post('/login', authController.login);
