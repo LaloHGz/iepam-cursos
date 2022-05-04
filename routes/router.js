@@ -10,7 +10,7 @@ router.get('/', authController.isAuthenticated, (req, res)=>{
     if(req.user.rol == "admin"){
         res.render('index', {user:req.user, data: req.courses});
     }else if(req.user.rol == "usuario"){
-        res.render('home-usuario', {user:req.user, data:req.courses});
+        res.render('home-usuario', {user:req.user, course:req.courses, avance:req.avance, leccion:req.lecciones});
     }
 });
 
@@ -28,5 +28,6 @@ router.get('/register', (req, res)=>{
 router.post('/register', authController.register);
 router.post('/login', authController.login);
 router.get('/logout', authController.logout);
+router.get('/course/:id_curso/:num_leccion', courseController.lessons);
 
 module.exports = router;

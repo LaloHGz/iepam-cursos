@@ -1,0 +1,160 @@
+/* Starts Course CSS */
+
+/* Grid Layout course content */
+.grid-layout{
+    display: grid;
+    width: 100%;
+    grid-template-columns: 80% 20%;
+    grid-template-rows: auto auto;
+}
+
+.content-video {
+    grid-column: 1;
+    grid-row: 1;
+    height: 70vh;
+}
+
+.content-archive {
+    padding-top: 3rem;
+    grid-column: 1;
+    grid-row: 1;
+    text-align: center;
+    height: 30vh;
+}
+
+.content-lessons {
+    height: 100vh;
+    grid-column: 2;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    background-color: rgb(247, 249, 250);
+    overflow-y: scroll;
+}
+
+.content-description {
+    grid-column: 1;
+    grid-row: 2;
+    margin-right: 20px;
+}
+
+.description {
+    padding-left: 50px;
+    padding-top: 30px;
+}
+
+.lesson {
+    border-bottom: 0.1px solid rgb(28, 29, 31);
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+
+.title-desc-lesson {
+    border-top: 0.1px solid rgb(28, 29, 31);
+    border-bottom: 0.1px solid rgb(28, 29, 31);
+    padding-left: 10px;
+    padding-top: 10px;
+    font-size: 1.1rem;
+}
+
+.lesson:hover {
+    background-color: #e0dddd;
+    cursor: pointer;
+}
+
+.lesson.isactive {
+    background-color: #e0dddd;
+}
+
+.title-lesson {
+    margin: 0;
+}
+
+.head-lessons {
+    font-weight: 600;
+}
+
+.label-comments {
+    margin: 0;
+}
+
+#form-comments {
+    height: 80px;
+    margin-top: 10px;
+    text-align: left;
+    border: 0.3px solid #004C8C;
+}
+
+.btn-comments {
+    background-color: rgb(27, 27, 27);
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.btn-comments:hover {
+    background-color: rgb(53, 53, 53);
+}
+
+
+.img-archive {
+    width: 10rem;
+    height: auto;
+}
+
+.link-archive {
+    width: 10rem;
+    color: rgb(73, 12, 151);
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    height: auto;
+}
+
+.link-archive:hover {
+    color: rgba(72, 12, 151, 0.888);
+    text-decoration: none;
+}
+
+.text-archive {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    width: 15rem;
+}
+
+.btn-complete {
+    background-color: rgb(72, 12, 151);
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.btn-complete:hover {
+    background-color: rgba(72, 12, 151, 0.846);
+    color: #e0dddd;
+}
+
+.btn-menu {
+    font-size: 2rem;
+    padding: 20px 50px;
+}
+
+.not-lessons {
+    width: 100vw;
+    height: 70vh;
+    display: grid;
+    place-items: center;
+}
+
+
+/* Ends Course CSS */

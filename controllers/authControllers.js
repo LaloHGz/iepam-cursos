@@ -136,9 +136,16 @@ exports.isAuthenticated = async(req, res, next)=>{
             conexion.query('SELECT * FROM usuario WHERE id_usuario = ?',[decodificada.id], (err, results)=>{
                 if(!results){return next();}
                 conexion.query('SELECT * FROM curso', (err, availableCourses ) =>{
-                    req.user = results[0];
-                    req.courses = availableCourses;
-                    return next();
+                    conexion.query('SELECT * FROM avance WHERE id_usuario = ?',[decodificada.id], (err, avances)=>{
+                        conexion.query('SELECT * leccion WHERE num_leccion = 1',(err, lecciones)=>{
+                            req.user = results[0];
+                            req.courses = availableCourses;
+                            console.log(avances);
+                            req.avance = avances;
+                            req.lecciones = lecciones;
+                            return next();
+                        });
+                    });
                 });
             });
         }catch(error){

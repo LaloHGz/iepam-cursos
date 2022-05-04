@@ -1,17 +1,21 @@
-const controller = {};
 const conexion = require('../database/db');
 
-
-controller.list = (req, res) => {
-        conexion.query('SELECT * FROM curso', (err, availableCourses ) =>{
-            if(err){
-                res.json(err);
-            }
-            res.render('home-usuario',{
-                data: availableCourses
-            });           
+exports.lessons = (req, res) => {
+    const {id_curso} = req.params;
+    const {num_leccion} = req.params;
+    conexion.query('SELECT * FROM leccion WHERE id_curso = ? ORDER BY num_leccion ASC', [id_curso], (err, lecciones) =>{
+        conexion.query('SELECT * FROM curso WHERE id_curso = ?', [id_curso], (err, curso)=>{
+            res.render('course',{
+                curso:curso,
+                leccionavance:num_leccion,
+                lecciones: lecciones 
+            });
         });
+    });
 };
+
+
+
 
 // controller.save = (req, res) => {
 //     req.getConnection((err, conn) => {
@@ -22,16 +26,6 @@ controller.list = (req, res) => {
 //     });  
 // };
 
-// controller.edit = (req, res) => {
-//     const {id} = req.params;
-//     req.getConnection((err,conn) =>{
-//         conn.query('SELECT * FROM customer WHERE id = ?', [id], (err, customer) =>{
-//             res.render('customer_edit',{
-//                 data: customer[0]
-//             });
-//         });
-//     });
-// };
 
 // controller.update = (req, res) => {
 //     const {id} = req.params;
@@ -52,5 +46,3 @@ controller.list = (req, res) => {
 //         });
 //     });
 // };
-
-module.exports = controller;

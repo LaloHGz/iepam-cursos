@@ -32,7 +32,7 @@
     <section class="title">
         <h1>Cursos Disponibles</h1>
     </section>
-    <span class="m-4 pr-3">Usuario: </span>
+    <span style="margin-left: 2rem;">Usuario: </span>
     <% if(user){%>
         <span class="badge bg-success"><%= user.nombre %></span>
     <%}%>
@@ -49,12 +49,25 @@
     <!-- Poner codigo para poner en automatico con for los cursos disponibles -->
     <section class="availableCurses">
         <div class="grid-layout">
-        <% if(data){%>
-                <% for(var i = 0; i < data.length; i++){%>
+        <% if(course){%>
+                <% for(var i = 0; i < course.length; i++){%>
                     <div class="course">
-                        <a href="/courses/<%= data[i].id_curso %>">
-                            <img class="course-img" src="<%= data[i].imagen %>" alt="course-img">
-                            <h3 class="title-course"><%= data[i].nombre %></h2>
+                        <% if(avance.length != 0){%>
+                            <%var index = -1; for(var j = 0; j < avance.length; j++){%>
+                                <%if(avance[j].id_curso == course[i].id_curso){%>
+                                    <%index = j;%>
+                                <%}%>
+                            <%}%>
+                            <%if(index == -1){%>
+                                <a href="/course/<%= course[i].id_curso %>/1">
+                            <%}else{%>
+                                <a href="/course/<%= course[i].id_curso %>/<%= avance[index].num_leccion %>">
+                            <%}%>
+                        <%}else{%>
+                        <a href="/course/<%= course[i].id_curso %>/1">
+                            <%}%>
+                            <img class="course-img" src="<%= course[i].imagen %>" alt="course-img">
+                            <h3 class="title-course"><%= course[i].nombre %></h2>
                         </a>
                     </div>
                 <%}%>
