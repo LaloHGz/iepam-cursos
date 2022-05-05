@@ -1,4 +1,5 @@
 const express = require('express');
+const { route } = require('express/lib/application');
 const router = express.Router();
 
 const authController = require('../controllers/authControllers');
@@ -29,5 +30,8 @@ router.post('/register', authController.register);
 router.post('/login', authController.login);
 router.get('/logout', authController.logout);
 router.get('/course/:id_curso/:num_leccion', courseController.lessons);
+router.post('/comment/:id_curso/:num_leccion', courseController.comment);
+router.post('/avance/:id_curso/:num_leccion', courseController.avance);
+
 
 module.exports = router;

@@ -140,7 +140,6 @@ exports.isAuthenticated = async(req, res, next)=>{
                         conexion.query('SELECT * leccion WHERE num_leccion = 1',(err, lecciones)=>{
                             req.user = results[0];
                             req.courses = availableCourses;
-                            console.log(avances);
                             req.avance = avances;
                             req.lecciones = lecciones;
                             return next();
@@ -156,8 +155,6 @@ exports.isAuthenticated = async(req, res, next)=>{
         res.redirect('/login');
     }    
 };
-
-
 
 exports.logout = (req, res)=>{
     res.clearCookie('jwt');

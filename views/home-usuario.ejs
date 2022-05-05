@@ -61,7 +61,11 @@
                             <%if(index == -1){%>
                                 <a href="/course/<%= course[i].id_curso %>/1">
                             <%}else{%>
-                                <a href="/course/<%= course[i].id_curso %>/<%= avance[index].num_leccion %>">
+                                <%if(course[i].num_lecciones > avance[index].num_leccion){%>
+                                    <a href="/course/<%= course[i].id_curso %>/<%= avance[index].num_leccion+1 %>">
+                                <%}else{%>
+                                    <a href="/course/<%= course[i].id_curso %>/<%= avance[index].num_leccion %>">
+                                <%}%>
                             <%}%>
                         <%}else{%>
                         <a href="/course/<%= course[i].id_curso %>/1">

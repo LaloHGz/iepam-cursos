@@ -76,9 +76,10 @@
 
 .label-comments {
     margin: 0;
+    font-weight: bold;
 }
 
-#form-comments {
+#comment {
     height: 80px;
     margin-top: 10px;
     text-align: left;

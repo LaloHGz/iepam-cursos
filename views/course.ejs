@@ -7,8 +7,9 @@
 
     <link rel="stylesheet" href="/css/login.css">
     <link rel="stylesheet" href="/css/course.css">
-
-    <link rel="stylesheet" href="/css/transition.css"> <!-- Loader Animation-->
+    
+    <!-- Loader Animation-->
+    <link rel="stylesheet" href="/css/transition.css"> 
 </head>
 <body>
 
@@ -25,8 +26,6 @@
 
     <!-- lessons section -->
     <div class="grid-layout">
-        <!-- FALTAN LAS CONDICIONALES SI NO TIENE NINGUNA LECCION EN EL CURSO -->
-
         <% if(lecciones.length != 0){%>
             <% var index = 0;
             for(var i = 0; i < lecciones.length; i++){
@@ -43,7 +42,7 @@
                 </div>
             <%}else{ %>
                 <div class="content-archive">
-                    <a href="/" class="link-archive">
+                    <a href="<%=url%>" class="link-archive" target="_blank">
                         <img class="img-archive" src="/img/carpeta.png" alt="img-archivo">
                         <p class="text-archive">Abre el archivo presionando aqui para avanzar en el curso</p> 
                     </a>
@@ -53,7 +52,6 @@
                 <div class="title-desc-lesson">
                     <p class="head-lessons">Contenido del curso</p>
                 </div>
-                <!-- Poner con ejs las lecciones del curso listadas con su href de su :id -->
     
                 <% for(var i = 0; i < lecciones.length; i++){%>
                     <% if(i == index){%>
@@ -61,7 +59,7 @@
                     <%}else{%>
                         <div class="lesson" onclick="window.location='/course/<%=curso[0].id_curso%>/<%=lecciones[i].num_leccion%>'">
                     <%}%>
-                            <p class="title-lesson"><%=lecciones[i].num_leccion%>.<%= lecciones[i].nombre%></p>
+                            <p class="title-lesson"><%=lecciones[i].num_leccion%>. <%= lecciones[i].nombre%></p>
                             <p class="time-lesson"><%=lecciones[i].tiempo_minutos%> min</p>
                         </div>
                 <%}%>
@@ -69,14 +67,21 @@
     
             <div class="content-description">
                 <div class="description">
-                    <!-- Poner con ejs el titulo y descripcion del curso, y poder enviar el comentario con un submit -->
                     <h2>Leccion <%=lecciones[index].num_leccion%> - <%= lecciones[index].nombre%></h2>
-                    <button type="submit" class="btn-complete">Marcar como completado</button>
+                    
+                    <!-- Hace el procedimiento para marcar como completada la leccion y ponerla en el avance si es que el num_leccion es menor a la que ya está marcada en el avance de ese curso -->
+                    <form action="/avance/<%=curso[0].id_curso%>/<%=leccionavance%>" method="post">
+                        <button type="submit" class="btn-complete">Marcar como completado</button>
+                    </form>
                     <p>Descripción del curso</p>
                     <p><%=curso[0].descripcion%></p>
-                    <label for="exampleFormControlTextarea1" class="form-label label-comments">Comentarios:</label>
-                    <textarea class="mo-form-control form-control" id="form-comments"></textarea>
-                    <button class="btn-comments">Enviar commentarios</button>
+
+                    <!-- Hacer el controlador para mandar comentarios a esa leccion -->
+                    <form action="/comment/<%=curso[0].id_curso%>/<%=leccionavance%>" method="post">
+                        <label for="comment" class="form-label label-comments">Comentarios:</label>
+                        <textarea class="mo-form-control form-control" id="comment" name="comment" placeholder="Agrega un comentario..."></textarea>
+                        <button class="btn-comments" type="submit">Enviar commentarios</button>
+                    </form>
                 </div>
             </div>
         </div>
