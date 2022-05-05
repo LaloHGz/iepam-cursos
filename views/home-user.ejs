@@ -32,19 +32,6 @@
     <section class="title">
         <h1>Cursos Disponibles</h1>
     </section>
-    <span style="margin-left: 2rem;">Usuario: </span>
-    <% if(user){%>
-        <span class="badge bg-success"><%= user.nombre %></span>
-    <%}%>
-
-    <span class="pr-3">Rol: </span>
-    <% if(user){%>
-        <% if(user.rol == "admin"){%>
-            <span class="badge bg-warning"><%= user.rol %></span>
-        <%}else if(user.rol == "usuario"){%>
-            <span class="badge bg-primary"><%= user.rol %></span>
-        <%}%>
-    <%}%>
 
     <section class="availableCurses">
         <div class="grid-layout">
@@ -74,7 +61,7 @@
                         </a>
                     </div>
                 <%}%>
-            <%}%>
+        <%}%>
         </div>
     </section>
 

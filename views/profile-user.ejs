@@ -27,27 +27,55 @@
     <!-- Navbar Section ends-->
 
     
-    <section class="title">
-        <h1 class="title-profile">Perfil</h1>
+    <section class="user-profile">
+        <h1 class="title-profile">Mi Perfil</h1>
+        
+        <div class="grid-layout">
+            <div class="info-usuario">
+                <div>
+                    <img width="150px" id="profile-img" src="<%=user.foto%>" alt="img-user">
+                </div>
+                <div>
+                    <% if(user){%>
+                        <span class="profile-name badge"><%= user.nombre %></span>
+                    <%}%>
+                </div>
+            </div>
+            <div id="info-cursos">
+                <h2 class="subtitle-progress">Progreso en los cursos</h2>
+                <div class="info-cursos">
+                    <%if(curso){%>
+                        <% for(var i = 0; i < curso.length; i++){%>
+                            <span class="curso-title"><%=curso[i].nombre%></span>
+                            <% if(avance.length != 0){%>
+                                <%var index = -1; for(var j = 0; j < avance.length; j++){%>
+                                    <%if(avance[j].id_curso == curso[i].id_curso){%>
+                                        <%index = j;%>
+                                    <%}%>
+                                <%}%>
+                                <%if(index == -1){%>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                                    </div>
+                                <%}else{ var progress = (avance[index].num_leccion * 100)/curso[i].num_lecciones%>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: <%=progress%>%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><%=progress%>%</div>
+                                    </div>
+                                <%}%>
+                            <%}else{%>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                                </div>
+                            <%}%>
+                            <br>
+                        <%}%>
+                    <%}%>
+                </div>
+            </div>
+        </div>
+                        
     </section>
-
-    <img width="150px" id="profile-img" src="<%=user.foto%>" alt="img-user">
-
-    <span style="margin-left: 2rem;">Usuario: </span>
-    <% if(user){%>
-        <span class="profile-name badge bg-success"><%= user.nombre %></span>
-    <%}%>
-
-    <span class="pr-3">Rol: </span>
-    <% if(user){%>
-        <% if(user.rol == "admin"){%>
-            <span class="badge bg-warning"><%= user.rol %></span>
-        <%}else if(user.rol == "usuario"){%>
-            <span class="badge bg-primary"><%= user.rol %></span>
-        <%}%>
-    <%}%>
-
-
+                        
 
     <script src="/js/transition.js"></script>
 </body>

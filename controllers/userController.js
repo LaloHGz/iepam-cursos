@@ -6,8 +6,8 @@ exports.profile = async(req, res)=>{
     try{
         const decodificada = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRETO);
         conexion.query('SELECT * FROM usuario WHERE id_usuario = ?',[decodificada.id], (err, usuario)=>{
-            conexion.query('SELECT * FROM curso', (err, cursos)=>{
-                conexion.query('SELECT * FROM avance WHERE id_usuario = ?', [decodificada.id], (err, avances)=>{
+            conexion.query('SELECT * FROM curso ORDER BY id_curso ASC', (err, cursos)=>{
+                conexion.query('SELECT * FROM avance WHERE id_usuario = ? ORDER BY id_curso ASC', [decodificada.id], (err, avances)=>{
                     res.render('profile-user',{
                         user:usuario[0],
                         curso:cursos,

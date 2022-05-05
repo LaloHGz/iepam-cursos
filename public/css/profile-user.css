@@ -1,16 +1,67 @@
-.title {
-    margin-top: 10rem;
+.user-profile {
+    padding: 10rem 3rem;
+    text-align: center;
 }
 
 .profile-img {
     width: 1rem;
 }
 
+.info-usuario {
+    padding-top: 3rem;
+}
+
 .title-profile {
-    font-size: 10rem !important;
+    text-align: center;
+    font-size: 4rem !important;
+    margin-bottom: 3rem;
     font-weight: bold;
 }
 
 .profile-name {
-    font-size: 3rem;
+    margin-top: 1rem;
+    font-size: 2rem;
+}
+
+.grid-layout {
+    display: grid;
+    grid-template-columns: 20% 80%;
+}
+
+.profile-name {
+    background-color: rgb(73, 12, 151);
+}
+
+.subtitle-progress{
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.info-cursos {
+    margin-top: 1rem;
+    text-transform: capitalize;
+    font-size: 1.2rem;
+    text-align: left;
+}
+
+.progress-bar{
+    background-color: #ba7e45;
+}
+
+.progress {
+    height: 1.5rem;
+}
+
+@media (max-width:768px){
+    .grid-layout {
+        grid-template-columns: 100%;
+    }
+    
+    .info-usuario {
+        padding-top: 0;
+    }
+
+    .subtitle-progress {
+        margin-top: 3rem;
+    }
 }
