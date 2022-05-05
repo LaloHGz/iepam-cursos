@@ -6,11 +6,20 @@
                 <img src="/img/iepam-logo-white.png" alt="logo-iepam" height="70">
             </a>
             <ul class="menu">
-                <a href="#" id="item-menu" class="is-active">Menu 🏠</a>
-                <a href="#" id="item-upload-course" class="not-active">Subir curso 📕</a>
-                <a href="#" id="item-my-courses" class="not-active">Mis cursos 👨🏻‍🏫</a>
-                <a href="#" id="item-profile">Perfil 👤</a>
-                <a href="logout" id="item-logout">Cerrar sesión ❌</a>
+                <%if(active == "menu"){%>
+                    <a href="/" id="item-menu" class="is-active">Menu 🏠</a>
+                    <a href="#" id="item-upload-course" class="not-active">Subir curso 📕</a>
+                    <a href="#" id="item-my-courses" class="not-active">Mis cursos 👨🏻‍🏫</a>
+                    <a href="/profile-user/<%=user.id_usuario%>" id="item-profile">Perfil 👤</a>
+                    <a href="/logout" id="item-logout">Cerrar sesión ❌</a>
+                <%}else if(active == "perfil"){%>
+                    <a href="/" id="item-menu" class="">Menu 🏠</a>
+                    <a href="#" id="item-upload-course" class="not-active">Subir curso 📕</a>
+                    <a href="#" id="item-my-courses" class="not-active">Mis cursos 👨🏻‍🏫</a>
+                    <a href="/profile-user/<%=user.id_usuario%>" id="item-profile" class="is-active">Perfil 👤</a>
+                    <a href="/logout" id="item-logout">Cerrar sesión ❌</a>
+                <%}%>
+                
             </ul>
     
             <button class="hamburguer">

@@ -2,7 +2,13 @@
 <html lang="es">
 <head>
     <%- include('partials/_head'); %>
-    <title>Curso ejemplo</title>
+    <% var index = 0;
+    for(var i = 0; i < lecciones.length; i++){
+        if(lecciones[i].num_leccion == leccionavance){
+            index = i;
+        }
+    } %>
+    <title>Leccion <%=leccionavance%>. <%=lecciones[index].nombre%></title>
     <!-- poner ejs para cambiar el title dependiendo el nombre del curso -->
 
     <link rel="stylesheet" href="/css/login.css">
@@ -26,13 +32,7 @@
 
     <!-- lessons section -->
     <div class="grid-layout">
-        <% if(lecciones.length != 0){%>
-            <% var index = 0;
-            for(var i = 0; i < lecciones.length; i++){
-                if(lecciones[i].num_leccion == leccionavance){
-                    index = i;
-                }
-            }
+        <% if(lecciones.length != 0){
             var url = lecciones[index].archivo_url;
             var validacion = url.substring(0,23);
             var urlembebida = url.substring(32,43);

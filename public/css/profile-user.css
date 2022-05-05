@@ -1,0 +1,16 @@
+.title {
+    margin-top: 10rem;
+}
+
+.profile-img {
+    width: 1rem;
+}
+
+.title-profile {
+    font-size: 10rem !important;
+    font-weight: bold;
+}
+
+.profile-name {
+    font-size: 3rem;
+}

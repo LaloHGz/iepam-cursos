@@ -7,6 +7,7 @@ const app = express();
 // seteamos el motor de busqueda
 app.set('view engine', 'ejs');
 
+
 // seteamos la carpeta public para archivos estáticos
 app.use(express.static('public'));
 

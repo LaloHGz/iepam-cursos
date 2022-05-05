@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <%- include('partials/_head'); %>
+    <title>Perfil</title>
+
+    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="/css/profile-user.css">
+
+    <!-- Transition animation -->
+    <link rel="stylesheet" href="/css/transition.css">
+
+</head>
+ 
+<body>
+
+    <!--Section for animation begins-->
+    <section id="loaderContainer">
+        <div id="mainLoader">
+        </div>
+    </section>
+    <!--Section for animation ends-->
+
+    <!-- Navbar Section begins-->
+    <%- include('partials/_navbar-menu'); %>
+    <!-- Navbar Section ends-->
+
+    
+    <section class="title">
+        <h1 class="title-profile">Perfil</h1>
+    </section>
+
+    <img width="150px" id="profile-img" src="<%=user.foto%>" alt="img-user">
+
+    <span style="margin-left: 2rem;">Usuario: </span>
+    <% if(user){%>
+        <span class="profile-name badge bg-success"><%= user.nombre %></span>
+    <%}%>
+
+    <span class="pr-3">Rol: </span>
+    <% if(user){%>
+        <% if(user.rol == "admin"){%>
+            <span class="badge bg-warning"><%= user.rol %></span>
+        <%}else if(user.rol == "usuario"){%>
+            <span class="badge bg-primary"><%= user.rol %></span>
+        <%}%>
+    <%}%>
+
+
+
+    <script src="/js/transition.js"></script>
+</body>
+
+</html>
