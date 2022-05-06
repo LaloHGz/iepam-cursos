@@ -104,7 +104,9 @@ exports.addLesson = (req, res)=>{
         res.redirect('/');
     }else{
         conexion.query('INSERT INTO leccion SET ?',{id_curso:id_curso,nombre:nombre,tiempo_minutos:minutos,num_leccion:num_lecciones,archivo_url:url},(err, resul)=>{
-            res.redirect('/');
+            conexion.query('UPDATE curso SET num_lecciones = ? WHERE id_curso = ?',[num_lecciones, id_curso], (err, result)=>{
+                res.redirect('/');
+            });
         });
     }
 };
