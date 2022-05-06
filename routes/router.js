@@ -43,12 +43,17 @@ router.get('/profile-user/:id_usuario', userController.profile);
 
 
 // Ambiente de Admin
+// Cursos
 router.post('/add', adminController.save);
-router.get('/update/:id_curso/:nombre/:imagen', adminController.edit);
+router.get('/update/:id_curso/:nombre/:descripcion', adminController.edit);
 router.post('/update/:id_curso', adminController.update);
 router.get('/delete/:id_curso', adminController.delete);
-router.get('/comments/:id_curso', adminController.comments);
-
-
+// Comentarios
+router.get('/comments/:id_leccion/:nombre', adminController.comments);
+router.get('/delete/:id_leccion/:nombre/:id_comentario', adminController.deleteComment);
+// Lecciones
+router.get('/delete/:id_curso/:nombre/:descripcion/:id_leccion', adminController.deleteLesson);
+router.post('/addLesson/:id_curso/:num_lecciones', adminController.addLesson);
+router.get('/update/:id_leccion', adminController.editLesson);
 
 module.exports = router;

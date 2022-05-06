@@ -23,7 +23,7 @@ CREATE TABLE curso (
     num_lecciones INT(6) NOT NULL,
     imagen VARCHAR(200) NOT NULL,
     PRIMARY KEY (id_curso),
-    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE leccion (
@@ -34,7 +34,7 @@ CREATE TABLE leccion (
     num_leccion INT(6) NOT NULL,
     archivo_url VARCHAR(200) NOT NULL,
     PRIMARY KEY (id_leccion),
-    FOREIGN KEY (id_curso) REFERENCES curso(id_curso)
+    FOREIGN KEY (id_curso) REFERENCES curso(id_curso) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE comentario (
@@ -43,8 +43,8 @@ CREATE TABLE comentario (
     id_leccion INT(6) UNSIGNED NOT NULL,
     comentario VARCHAR(300) NOT NULL,
     PRIMARY KEY (id_comentario),
-    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
-    FOREIGN KEY (id_leccion) REFERENCES leccion(id_leccion)
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (id_leccion) REFERENCES leccion(id_leccion) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE avance (
@@ -53,6 +53,6 @@ CREATE TABLE avance (
     id_curso INT(6) UNSIGNED NOT NULL,
     num_leccion INT(6) NOT NULL,
     PRIMARY KEY (id_avance),
-    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
-    FOREIGN KEY (id_curso) REFERENCES leccion(id_curso)
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (id_curso) REFERENCES leccion(id_curso) ON DELETE CASCADE ON UPDATE CASCADE
 );

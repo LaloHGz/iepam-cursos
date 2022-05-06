@@ -1,3 +1,8 @@
 .course-edit {
     margin: 3rem 5rem;
 }
+
+.btn-options {
+    display: block;
+    margin-top: 1rem;
+}

@@ -2,18 +2,20 @@
 <html lang="en">
 
 <head>
-
-  <title>CustomerEdit</title>
+  <%- include('partials/_head'); %>
+  <title>Editar curso</title>
   <!-- NAVIGATION -->
   <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
   <link rel="stylesheet" href="/css/course-edit-admin.css">
+  <link rel="stylesheet" href="/css/buttons-admin.css">
+
 </head>
 
 <body>
 
   <!-- navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="/">Apartado para editar información</a>
+    <a class="navbar-brand" href="/">Edición de Curso</a>
   </nav>
 
   <div class="course-edit">
@@ -40,7 +42,7 @@
             <%= title %>
           </td>
           <td>
-            <%= imagen %>
+            <%= descripcion %>
           </td>
         </tr>
       </tbody>
@@ -54,20 +56,93 @@
             <form action="/update/<%=data%>" method="POST">
   
               <div class="form-group">
-                <input id="nombre" type="text" name="nombre" placeholder="Título" class="form-control" autofocus>
+                <input id="nombre"  type="text" name="nombre" value="<%=title%>" class="form-control" autofocus>
               </div>
   
               <div class="form-group">
-                <input type="text" name="descripcion" id="descripcion" placeholder="Nueva Descripción"
+                <input type="text" name="descripcion" id="descripcion" value="<%=descripcion%>"
                   class="form-control">
               </div>
-              <button type="submit" class="btn btn-primary">Información correcta</button>
+              <button type="submit" class="btn btn-primary">Modificar curso</button>
 
             </form>
           </div>
         </div>
       </div>
     </div>
+
+
+    <br><br><br><br>
+<h3>Añade nuevas lecciones! </h3>
+<section class="lectionsContainer">
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <td>N°</td>
+        <td>Nombre de lección</td>
+        <td>Tiempo en minutos</td>
+        <td>Archivo Url</td>
+        <td>Acciones</td>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% if (leccion) { %>
+        <% for(var i=0; i < leccion.length; i++) { %>
+          <tr>
+            <td>
+              <%= leccion[i].num_leccion %>
+            </td>
+            <td>
+              <%= leccion[i].nombre %>
+            </td>
+            <td>
+              <%= leccion[i].tiempo_minutos %>
+            </td>
+            <td>
+              <%= leccion[i].archivo_url %>
+            </td>
+            <td>
+              <a href="/update/<%=leccion[i].id_leccion%>"
+                class="btn-options btn btn-info">Editar</a>
+              <a href="/delete/<%=data%>/<%=title%>/<%=descripcion%>/<%=leccion[i].id_leccion%>" class="btn-options btn btn-danger">Eliminar</a>
+              <a href="/comments/<%=leccion[i].id_leccion%>/<%=leccion[i].nombre%>" class="btn-options btn btn-success">Comentarios</a>
+            </td>
+          </tr>
+          <% } %>
+            <% } %>
+    </tbody>
+    
+  </table>
+
+
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-md-5 offset-md-3 card">
+        <div class="card-body">
+          <form action="/addLesson/<%=data%>/<%=(leccion[leccion.length-1].num_leccion)+1%>" method="post">
+          
+            <div class="form-group">
+              <input id="nombre" type="text" name="nombre" placeholder="Título" class="form-control" autofocus>
+            </div>
+            <div class="form-group">
+              <input id="numero" name="numero" class="form-control" type="number" value="<%=(leccion[leccion.length-1].num_leccion)+1%>" aria-label="Disabled input example" disabled readonly>
+            </div>
+            <div class="form-group">
+              <input type="number" name="tiempo_minutos" id="tiempo_minutos" placeholder="Tiempo en minutos" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="text" name="archivo_url" id="archivo_url" placeholder="Archivo URL" class="form-control">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Añadir lección</button> 
+       
+          </form>
+        </div>
+      </div>
+    </div>
+  </div> 
+</section>
 
   </div>
 

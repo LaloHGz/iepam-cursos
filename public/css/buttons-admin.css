@@ -1,0 +1,21 @@
+.btn-info {
+    border: none;
+    background-color: rgb(73, 12, 151);
+    color: white;
+}
+
+.btn-info:hover, .btn-info:focus, .btn-info:active {
+    background-color: rgba(72, 12, 151, 0.68) !important;
+    color: white !important;
+}
+
+.btn-success {
+    border: none;
+    background-color: #ba7e45;
+    color: white;
+}
+
+.btn-success:hover, .btn-success:focus, .btn-success:active {
+    background-color: #ba7d45a8 !important;
+    color: white !important;
+}
