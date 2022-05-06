@@ -24,12 +24,60 @@ exports.profile = async(req, res)=>{
 
 exports.uploadCourses = (req, res)=>{
     const {id_usuario} = req.params;
-    conexion.query('SELECT * FROM curso WHERE id_curso = ?',[id_usuario], (err, cursos) => {
+    conexion.query('SELECT * FROM curso WHERE id_usuario = ?',[id_usuario], (err, cursos) => {
         if (err) {
          res.json(err);
         }
         res.render('uploadCoursesUser', {
-           curso: cursos
+           curso: cursos,
+           usuario: id_usuario
         });
     });
+};
+
+exports.addCourseUser = (req, res)=>{
+    const nombre = req.body.nombre;
+    const descripcion = req.body.descripcion;
+    const imagen = req.body.imagen;
+    const {id_usuario} = req.params;
+
+    if(!nombre || !descripcion | !imagen){
+        conexion.query('SELECT * FROM curso WHERE id_usuario = ?',[id_usuario], (err, cursos) => {
+            if (err) {
+             res.json(err);
+            }
+            res.render('uploadCoursesUser', {
+               curso: cursos,
+               usuario: id_usuario
+            });
+        });
+    }else{
+        conexion.query('INSERT INTO curso set ?',{ id_usuario:id_usuario, nombre:nombre, num_lecciones:0, imagen:imagen, descripcion:descripcion}, (err, result)=>{    
+            conexion.query('SELECT * FROM curso WHERE id_usuario = ?',[id_usuario], (err, cursos) => {
+                if (err) {
+                 res.json(err);
+                }
+                res.render('uploadCoursesUser', {
+                   curso: cursos,
+                   usuario: id_usuario
+                });
+            });
+        });
+    }
+};
+
+exports.edit = (req, res) => {
+    const {nombre} = req.params;
+    const {id_curso} = req.params;
+    const {descripcion} = req.params;
+
+    conexion.query('SELECT * FROM leccion WHERE id_curso = ? ORDER BY num_leccion ASC',[id_curso],(err, lecciones)=>{
+        res.render('course-edit-user',{
+            leccion:lecciones,
+            data: id_curso,
+            title: nombre, 
+            descripcion: descripcion
+        });  
+    });
+
 };

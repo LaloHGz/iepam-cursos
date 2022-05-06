@@ -4,10 +4,13 @@
 <head>
   <%- include('partials/_head'); %>
     <title>Mis cursos</title>
-    <!-- Custom styles for this template -->
-    <link rel="stylesheet" href="/css/buttons-admin.css">
 
-    <!-- Transition animation -->
+    <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">    
+    <!-- Custom styles for this template -->
+    <link href="/css/home-admin.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/buttons-admin.css">
+    <link rel="stylesheet" href="/css/uploadCoursesUser.css">
+    <!-- Transition animation -->  
     <link rel="stylesheet" href="/css/transition.css">
 
 </head>
@@ -21,22 +24,10 @@
     </section>
     <!--Section for animation ends-->
 
-    <!-- Navbar Section begins-->
-    <%- include('partials/_navbar-menu'); %>
-    <!-- Navbar Section ends-->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="/">Subir Cursos</a>
+    </nav>
         
-    <section class="sectionForUserRole">
-        <img class="logo" src="/img/iepam-logo-dark.png" alt="iepam-logo">
-        <span class="user-badge">Usuario: </span>
-        <% if(user){%>
-        <span class="user-info"><%= user.nombre %></span>
-        <br>
-        <span class="user-badge">Rol: </span>
-        <span class="user-info"><%= user.rol %></span>
-        <%}%>
-        <a href="logout" class="btn-logout pl-3 btn btn-danger">Cerrar sesión</a>
-
-    </section>
 
     <div class="container mt-5">
         <div class="row">
@@ -65,9 +56,8 @@
                         <%= curso[i].descripcion %>
                     </td>
                     <td>
-                        <a href="/update/<%= curso[i].id_curso%>/<%=curso[i].nombre%>/<%= curso[i].descripcion%>"
+                        <a href="/updateUser/<%= curso[i].id_curso%>/<%=curso[i].nombre%>/<%= curso[i].descripcion%>"
                         class="btn-options btn btn-info">Editar</a>
-                        <a href="/delete/<%= curso[i].id_curso %>" class="btn-options btn btn-danger">Eliminar</a>
                     </td>
                     </tr>
                     <% } %>
@@ -78,7 +68,7 @@
         <div class="col-md-12">
             <div class="card-body">
 
-            <form action="/add" method="POST">
+            <form action="/addCourseUser/<%=usuario%>" method="POST">
                 <div class="form-group">
                 <input id="nombre" type="text" name="nombre" placeholder="Título" class="form-control" autofocus>
                 </div>

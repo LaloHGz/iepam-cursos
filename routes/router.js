@@ -40,7 +40,8 @@ router.post('/comment/:id_curso/:num_leccion', courseController.comment);
 router.post('/avance/:id_curso/:num_leccion', courseController.avance);
 router.get('/profile-user/:id_usuario', userController.profile);
 router.get('/uploadCourses/:id_usuario', userController.uploadCourses);
-
+router.post('/addCourseUser/:id_usuario', userController.addCourseUser);
+router.get('/updateUser/:id_curso/:nombre/:descripcion', userController.edit);
 
 
 
