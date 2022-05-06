@@ -108,3 +108,31 @@ exports.addLesson = (req, res)=>{
         });
     }
 };
+
+exports.editLesson = (req, res)=>{
+    const {id_leccion} = req.params;
+    conexion.query('SELECT * FROM leccion WHERE id_leccion = ?',[id_leccion],(err, leccion)=>{
+        res.render('lessonEditUser',{
+            leccion:leccion
+        });
+    });
+};
+
+exports.updateLesson = (req, res)=>{
+    const {id_leccion} = req.params;
+    conexion.query('UPDATE leccion SET ? WHERE id_leccion = ?',[req.body, id_leccion], (err, result)=>{
+        res.redirect('/');
+    });
+};
+
+exports.comments = (req, res) =>{
+    const {id_leccion} = req.params;
+    const {nombre} = req.params;
+    conexion.query('SELECT * FROM comentario WHERE id_leccion = ?', [id_leccion], (err, comentarios)=>{
+        res.render('comments-user',{
+            leccion:id_leccion,
+            title:nombre,
+            comments:comentarios
+        });
+    });
+};
