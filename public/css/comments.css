@@ -1,0 +1,42 @@
+.content-comments {
+    margin-top: 20px;
+    padding: 0 50px;
+}
+
+.mo-subtitle-light {
+    text-align: left;
+    margin: 10px 0;
+}
+
+.mo-text-light {
+    text-align: left;
+    margin: 0;
+    margin-bottom: 30px;
+}
+
+.comment-card {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 10% 10% 80%;
+    grid-template-rows: auto auto;
+    background-color: #c4c4c445;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 7px rgb(0 0 0 / 0.2);
+}
+
+.img-user {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.user {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.comment {
+    text-align: justify;
+}

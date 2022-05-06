@@ -7,10 +7,16 @@ exports.lessons = (req, res) => {
     const {num_leccion} = req.params;
     conexion.query('SELECT * FROM leccion WHERE id_curso = ? ORDER BY num_leccion ASC', [id_curso], (err, lecciones) =>{
         conexion.query('SELECT * FROM curso WHERE id_curso = ?', [id_curso], (err, curso)=>{
-            res.render('course',{
-                curso:curso,
-                leccionavance:num_leccion,
-                lecciones: lecciones 
+            conexion.query('SELECT * FROM comentario', (err, comentarios)=>{
+                conexion.query('SELECT * FROM usuario ORDER BY id_usuario ASC',(err, usuario)=>{
+                    res.render('course',{
+                        curso:curso,
+                        leccionavance:num_leccion,
+                        lecciones: lecciones,
+                        comment:comentarios,
+                        usuario:usuario
+                    });
+                });
             });
         });
     });

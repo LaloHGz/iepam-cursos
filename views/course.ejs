@@ -17,7 +17,8 @@
 
     <link rel="stylesheet" href="/css/login.css">
     <link rel="stylesheet" href="/css/course.css">
-    
+    <link rel="stylesheet" href="/css/comments.css">
+
     <!-- Loader Animation-->
     <link rel="stylesheet" href="/css/transition.css"> 
 </head>
@@ -86,10 +87,29 @@
                         <button class="btn-comments" type="submit">Enviar commentarios</button>
                     </form>
 
-                    
-
                 </div>
             </div>
+
+            <div class="content-comments">
+                <%if(comment){
+                    for(var i = 0; i < comment.length; i++){
+                        var userIndex = 0;
+                        for(var j = 0; j < usuario.length; j++){
+                            if(comment[i].id_usuario == usuario[j].id_usuario){
+                                userIndex = j;
+                            }
+                        }
+                        if(comment[i].id_leccion == lecciones[index].id_leccion){%>
+                        <div class="comment-card">
+                            <img style="width: 3rem;" class="img-user" src="<%=usuario[userIndex].foto%>" alt="test">
+                            <p class="user"><%=usuario[userIndex].nombre%></p>
+                            <p class="comment"><%=comment[i].comentario%></p>
+                        </div>
+                        <%}%>
+                    <%}%>
+                <%}%>
+            </div>
+
         </div>
         <%}else{%>
             <div class="not-lessons">
