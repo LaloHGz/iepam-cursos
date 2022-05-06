@@ -138,3 +138,7 @@ exports.comments = (req, res) =>{
         });
     });
 };
+
+exports.alertPermisos = (req, res) =>{
+    res.render('alert-permisos');
+}; 

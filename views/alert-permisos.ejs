@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <%- include('partials/_head'); %>
+    <title>No tienes los permisos necesarios</title>
+    <!-- poner ejs para cambiar el title dependiendo el nombre del curso -->
+
+    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="/css/course.css">
+    
+</head>
+<body>
+
+    <!-- Navbar section -->
+    <%- include('partials/_navbar-simple-dark'); %>
+
+    <div class="not-lessons" style="padding: 3rem 6rem;">
+        <h1 style="font-size: 3rem; text-align: center;" class="text-not-lessons">No tienes los permisos necesarios para subir cursos😥...</h1>
+        <h1 style="font-size: 3rem; text-align: center;">Para poder subir cursos primero completa el curso de <b>introducción</b> que se encuentra en el apartado de Menú</h1>
+        <a href="/" class="btn btn-complete btn-menu">Regresar al Menú🏠</a>
+    </div>
+
+
+</body>
+</html>

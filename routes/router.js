@@ -47,7 +47,7 @@ router.post('/addLessonUser/:id_curso/:num_lecciones', userController.addLesson)
 router.get('/updateLessonUser/:id_leccion', userController.editLesson);
 router.post('/updateLessonUser/:id_leccion', userController.updateLesson);
 router.get('/commentsUser/:id_leccion/:nombre', userController.comments);
-
+router.get('/alert-permisos', userController.alertPermisos);
 
 
 // Ambiente de Admin
