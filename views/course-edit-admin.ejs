@@ -14,15 +14,18 @@
 <body>
 
   <!-- navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="/">Edición de Curso</a>
-  </nav>
+
+  <nav class="navbar navbar-light mo-navbar-dark" style="background-color: rgb(73, 12, 151);">
+    <div class="container">
+      <a class="navbar-brand" href="/">
+        <img src="/img/iepam-logo-white.png" alt="" height="70">
+        <span style="color: white; padding-left: 2rem !important;">Edición de curso <%= title %></span>
+      </a>
+    </div>
+  </nav>    
 
   <div class="course-edit">
-    <h1>
-      <%= data%># Curso de: <%= title %>
-    </h1>
-  
+    
     <table class="table table-bordered table-hover">
       <thead>
         <tr>

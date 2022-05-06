@@ -13,10 +13,14 @@
 
 <body>
 
-  <!-- navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark">
-    <a class="navbar-brand" href="/">Editar lección</a>
-  </nav>
+  <nav class="navbar navbar-light mo-navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="/">
+        <img src="/img/iepam-logo-white.png" alt="" height="70">
+        <span style="color: white; padding-left: 2rem !important;">Editar lección <%=leccion[0].nombre%></span>
+      </a>
+    </div>
+  </nav>    
   
   <div class="lesson-edit">
     <form action="/updateLessonUser/<%=leccion[0].id_leccion%>" method="post">
