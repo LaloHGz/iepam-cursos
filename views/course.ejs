@@ -72,8 +72,14 @@
             <div class="content-description">
                 <div class="description">
                     <h2>Leccion <%=lecciones[index].num_leccion%> - <%= lecciones[index].nombre%></h2>
-                    
-                    <!-- Hace el procedimiento para marcar como completada la leccion y ponerla en el avance si es que el num_leccion es menor a la que ya está marcada en el avance de ese curso -->
+                    <%var user = 0;
+                    for(var j = 0; j < usuario.length; j++){
+                        if(curso[0].id_usuario == usuario[j].id_usuario){
+                            user = j;
+                        }
+                    }%>
+                    <p style="font-size: 1.4rem;"><b>Creador del curso: </b><%=usuario[user].nombre%></p>
+
                     <form action="/avance/<%=curso[0].id_curso%>/<%=leccionavance%>" method="post">
                         <button type="submit" class="btn-complete">Marcar como completado</button>
                     </form>
