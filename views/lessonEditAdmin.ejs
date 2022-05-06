@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('partials/_head'); %>
+    <title>Editar Leccion</title>
+    <!-- NAVIGATION -->
+    <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/lessonEditAdmin.css">
+    <link rel="stylesheet" href="/css/buttons-admin.css">
+</head>
+
+<body>
+
+  <!-- navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">Editar lección</a>
+  </nav>
+  
+  <div class="lesson-edit">
+    <form action="/updateLesson/<%=leccion[0].id_leccion%>" method="post">
+              
+        <div class="form-group">
+          <input id="nombre" type="text" name="nombre" value="<%=leccion[0].nombre%>" class="form-control" autofocus>
+        </div>
+        <div class="form-group">
+          <input id="numero" name="numero" class="form-control" type="number" value="<%=leccion[0].num_leccion%>" aria-label="Disabled input example" disabled>
+        </div>
+        <div class="form-group">
+          <input type="number" name="tiempo_minutos" id="tiempo_minutos" value="<%=leccion[0].tiempo_minutos%>" class="form-control">
+        </div>
+        <div class="form-group">
+          <input type="text" name="archivo_url" value="<%=leccion[0].archivo_url%>" placeholder="Archivo URL" class="form-control">
+        </div>
+    
+        <button type="submit" class="btn btn-primary">Modificar lección</button> 
+    
+      </form>
+  </div>
+
+
+</body>
+
+</html>
+
+
+
+

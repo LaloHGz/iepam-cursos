@@ -39,6 +39,9 @@ router.get('/course/:id_curso/:num_leccion', courseController.lessons);
 router.post('/comment/:id_curso/:num_leccion', courseController.comment);
 router.post('/avance/:id_curso/:num_leccion', courseController.avance);
 router.get('/profile-user/:id_usuario', userController.profile);
+router.get('/uploadCourses/:id_usuario', userController.uploadCourses);
+
+
 
 
 
@@ -54,6 +57,7 @@ router.get('/delete/:id_leccion/:nombre/:id_comentario', adminController.deleteC
 // Lecciones
 router.get('/delete/:id_curso/:nombre/:descripcion/:id_leccion', adminController.deleteLesson);
 router.post('/addLesson/:id_curso/:num_lecciones', adminController.addLesson);
-router.get('/update/:id_leccion', adminController.editLesson);
+router.get('/updateLesson/:id_leccion', adminController.editLesson);
+router.post('/updateLesson/:id_leccion', adminController.updateLesson);
 
 module.exports = router;

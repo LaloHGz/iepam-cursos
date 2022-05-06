@@ -21,3 +21,15 @@ exports.profile = async(req, res)=>{
         console.log(error);
     }
 };
+
+exports.uploadCourses = (req, res)=>{
+    const {id_usuario} = req.params;
+    conexion.query('SELECT * FROM curso WHERE id_curso = ?',[id_usuario], (err, cursos) => {
+        if (err) {
+         res.json(err);
+        }
+        res.render('uploadCoursesUser', {
+           curso: cursos
+        });
+    });
+};
