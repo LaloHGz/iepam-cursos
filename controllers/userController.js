@@ -81,3 +81,30 @@ exports.edit = (req, res) => {
     });
 
 };
+
+exports.update = (req, res) => {
+    const {id_curso} = req.params;
+    const updateCourse = req.body;
+
+    conexion.query('UPDATE curso set ? where id_curso = ?', [updateCourse, id_curso], (err, rows) => {
+        res.redirect('/');
+    });
+};
+
+
+exports.addLesson = (req, res)=>{
+    // Datos del form
+    const nombre = req.body.nombre;
+    const {id_curso} = req.params;
+    const {num_lecciones} = req.params;
+    const minutos = req.body.tiempo_minutos;
+    const url = req.body.archivo_url;
+
+    if(!nombre || !num_lecciones || !minutos || !url){
+        res.redirect('/');
+    }else{
+        conexion.query('INSERT INTO leccion SET ?',{id_curso:id_curso,nombre:nombre,tiempo_minutos:minutos,num_leccion:num_lecciones,archivo_url:url},(err, resul)=>{
+            res.redirect('/');
+        });
+    }
+};

@@ -117,10 +117,6 @@ exports.addLesson = (req, res)=>{
     const {num_lecciones} = req.params;
     const minutos = req.body.tiempo_minutos;
     const url = req.body.archivo_url;
-    console.log(nombre);
-    console.log(num_lecciones);
-    console.log(minutos);
-    console.log(url);
 
     if(!nombre || !num_lecciones || !minutos || !url){
         res.redirect('/');

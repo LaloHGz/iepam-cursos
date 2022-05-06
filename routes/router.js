@@ -42,8 +42,8 @@ router.get('/profile-user/:id_usuario', userController.profile);
 router.get('/uploadCourses/:id_usuario', userController.uploadCourses);
 router.post('/addCourseUser/:id_usuario', userController.addCourseUser);
 router.get('/updateUser/:id_curso/:nombre/:descripcion', userController.edit);
-
-
+router.post('/updateUser/:id_curso/:nombre/:descripcion', userController.update);
+router.post('/addLessonUser/:id_curso/:num_lecciones', userController.addLesson);
 
 
 // Ambiente de Admin

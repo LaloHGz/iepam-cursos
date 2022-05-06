@@ -8,13 +8,14 @@
   <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
   <link rel="stylesheet" href="/css/course-edit-admin.css">
   <link rel="stylesheet" href="/css/buttons-admin.css">
+  <link rel="stylesheet" href="/css/uploadCoursesUser.css">
 
 </head>
 
 <body>
 
   <!-- navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark">
     <a class="navbar-brand" href="/">Edición de Curso</a>
   </nav>
 
@@ -53,7 +54,7 @@
       <div class="row">
         <div class="col-md-5 offset-md-3 card">
           <div class="card-body">
-            <form action="/update/<%=data%>" method="POST">
+            <form action="/updateUser/<%=data%>/<%=title%>/<%=descripcion%>" method="POST">
   
               <div class="form-group">
                 <input id="nombre"  type="text" name="nombre" value="<%=title%>" class="form-control" autofocus>
@@ -87,7 +88,7 @@
     </thead>
 
     <tbody>
-      <% if (leccion) { %>
+      <% if (leccion.length != 0) { %>
         <% for(var i=0; i < leccion.length; i++) { %>
           <tr>
             <td>
@@ -103,9 +104,9 @@
               <%= leccion[i].archivo_url %>
             </td>
             <td>
-              <a href="/updateLesson/<%=leccion[i].id_leccion%>"
+              <a href="/updateLessonUser/<%=leccion[i].id_leccion%>"
                 class="btn-options btn btn-info">Editar</a>
-              <a href="/comments/<%=leccion[i].id_leccion%>/<%=leccion[i].nombre%>" class="btn-options btn btn-success">Comentarios</a>
+              <a href="/commentsUser/<%=leccion[i].id_leccion%>/<%=leccion[i].nombre%>" class="btn-options btn btn-success">Comentarios</a>
             </td>
           </tr>
           <% } %>
@@ -119,14 +120,23 @@
     <div class="row">
       <div class="col-md-5 offset-md-3 card">
         <div class="card-body">
-          <form action="/addLesson/<%=data%>/<%=(leccion[leccion.length-1].num_leccion)+1%>" method="post">
-          
+          <%if(leccion.length != 0){%>
+          <form action="/addLessonUser/<%=data%>/<%=(leccion[leccion.length-1].num_leccion)+1%>" method="post">
             <div class="form-group">
               <input id="nombre" type="text" name="nombre" placeholder="Título" class="form-control" autofocus>
             </div>
             <div class="form-group">
               <input id="numero" name="numero" class="form-control" type="number" value="<%=(leccion[leccion.length-1].num_leccion)+1%>" aria-label="Disabled input example" disabled readonly>
             </div>
+            <%}else{%>
+            <form action="/addLessonUser/<%=data%>/1" method="post">
+              <div class="form-group">
+                <input id="nombre" type="text" name="nombre" placeholder="Título" class="form-control" autofocus>
+              </div>
+              <div class="form-group">
+                <input id="numero" name="numero" class="form-control" type="number" value="1" aria-label="Disabled input example" disabled readonly>
+              </div>
+              <%}%>
             <div class="form-group">
               <input type="number" name="tiempo_minutos" id="tiempo_minutos" placeholder="Tiempo en minutos" class="form-control">
             </div>
