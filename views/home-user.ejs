@@ -35,29 +35,29 @@
 
     <section class="availableCurses">
         <div class="grid-layout">
-        <% if(course){%>
-                <% for(var i = 0; i < course.length; i++){%>
+        <% if(curso){%>
+                <% for(var i = 0; i < curso.length; i++){%>
                     <div class="course">
                         <% if(avance.length != 0){%>
                             <%var index = -1; for(var j = 0; j < avance.length; j++){%>
-                                <%if(avance[j].id_curso == course[i].id_curso){%>
+                                <%if(avance[j].id_curso == curso[i].id_curso){%>
                                     <%index = j;%>
                                 <%}%>
                             <%}%>
                             <%if(index == -1){%>
-                                <a href="/course/<%= course[i].id_curso %>/1">
+                                <a href="/course/<%= curso[i].id_curso %>/1">
                             <%}else{%>
-                                <%if(course[i].num_lecciones > avance[index].num_leccion){%>
-                                    <a href="/course/<%= course[i].id_curso %>/<%= avance[index].num_leccion+1 %>">
+                                <%if(curso[i].num_lecciones > avance[index].num_leccion){%>
+                                    <a href="/course/<%= curso[i].id_curso %>/<%= avance[index].num_leccion+1 %>">
                                 <%}else{%>
-                                    <a href="/course/<%= course[i].id_curso %>/<%= avance[index].num_leccion %>">
+                                    <a href="/course/<%= curso[i].id_curso %>/<%= avance[index].num_leccion %>">
                                 <%}%>
                             <%}%>
                         <%}else{%>
-                        <a href="/course/<%= course[i].id_curso %>/1">
+                        <a href="/course/<%= curso[i].id_curso %>/1">
                             <%}%>
-                            <img class="course-img" src="<%= course[i].imagen %>" alt="course-img">
-                            <h3 class="title-course"><%= course[i].nombre %></h2>
+                            <img class="course-img" src="<%= curso[i].imagen %>" alt="course-img">
+                            <h3 class="title-course"><%= curso[i].nombre %></h2>
                         </a>
                     </div>
                 <%}%>

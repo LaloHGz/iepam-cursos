@@ -37,7 +37,7 @@ exports.register = async(req, res)=>{
                 }else{
                     let passHash = await bcryptjs.hash(pass,8);
                     // console.log(passHash);
-                    conexion.query('INSERT INTO usuario SET ?', {nombre:user, correo:email, contrasena: passHash, rol: "usuario", foto:"https://cdn-icons-png.flaticon.com/512/456/456283.png"}, (err, results)=>{
+                    conexion.query('INSERT INTO usuario SET ?', {nombre:user, correo:email, contrasena: passHash, rol: "usuario", foto:"https://cdn-icons-png.flaticon.com/512/3237/3237472.png"}, (err, results)=>{
                         if(err){
                             console.log(err);
                         }

@@ -5,14 +5,15 @@ const router = express.Router();
 const authController = require('../controllers/authControllers');
 const courseController = require('../controllers/courseController');
 const userController = require('../controllers/userController');
+const adminController = require('../controllers/adminController');
 
 // router para las vistas
 
 router.get('/', authController.isAuthenticated, (req, res)=>{
     if(req.user.rol == "admin"){
-        res.render('index', {user:req.user, data: req.courses});
+        res.render('home-admin', {user:req.user, curso: req.courses});
     }else if(req.user.rol == "usuario"){
-        res.render('home-user', {user:req.user, course:req.courses, avance:req.avance, leccion:req.lecciones, active:"menu"});
+        res.render('home-user', {user:req.user, curso:req.courses, avance:req.avance, leccion:req.lecciones, active:"menu"});
     }
 });
 
@@ -24,6 +25,12 @@ router.get('/register', (req, res)=>{
     res.render('register',{alert:false});
 });
 
+router.get('/juego', (req,res)=>{
+    res.render('juego');
+});
+
+//Ambiente de Usuario
+
 // router para los métodos del controller
 router.post('/register', authController.register);
 router.post('/login', authController.login);
@@ -32,6 +39,16 @@ router.get('/course/:id_curso/:num_leccion', courseController.lessons);
 router.post('/comment/:id_curso/:num_leccion', courseController.comment);
 router.post('/avance/:id_curso/:num_leccion', courseController.avance);
 router.get('/profile-user/:id_usuario', userController.profile);
+
+
+
+// Ambiente de Admin
+router.post('/add', adminController.save);
+router.get('/update/:id_curso/:nombre/:imagen', adminController.edit);
+router.post('/update/:id_curso', adminController.update);
+router.get('/delete/:id_curso', adminController.delete);
+router.get('/comments/:id_curso', adminController.comments);
+
 
 
 module.exports = router;

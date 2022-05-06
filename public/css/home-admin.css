@@ -1,0 +1,24 @@
+.row {
+    width: fit-content;
+}
+
+.sectionForUserRole {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.btn-logout{
+    display: block;
+    width: 10rem;
+    margin: 2rem auto;
+}
+
+.user-badge {
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.btn-options {
+    padding:  1rem;
+    margin-top: 0.5rem;
+}

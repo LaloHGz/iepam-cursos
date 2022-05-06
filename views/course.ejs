@@ -8,7 +8,11 @@
             index = i;
         }
     } %>
-    <title>Leccion <%=leccionavance%>. <%=lecciones[index].nombre%></title>
+    <% if(lecciones.length != 0){%>
+        <title>Leccion <%=leccionavance%>. <%=lecciones[index].nombre%></title>
+    <%}else{%>
+        <title><%=curso[0].nombre%></title>
+    <%}%>
     <!-- poner ejs para cambiar el title dependiendo el nombre del curso -->
 
     <link rel="stylesheet" href="/css/login.css">
@@ -27,7 +31,6 @@
     <!--Section for animation ends-->
 
     <!-- Navbar section -->
-    <!-- <section id="header"></section> -->
     <%- include('partials/_navbar-simple-dark'); %>
 
     <!-- lessons section -->
@@ -82,6 +85,9 @@
                         <textarea class="mo-form-control form-control" id="comment" name="comment" placeholder="Agrega un comentario..."></textarea>
                         <button class="btn-comments" type="submit">Enviar commentarios</button>
                     </form>
+
+                    
+
                 </div>
             </div>
         </div>

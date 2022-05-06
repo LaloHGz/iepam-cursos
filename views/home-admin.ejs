@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('partials/_head'); %>
+    <title>Home Admin</title>
+
+    <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">    
+    <!-- Custom styles for this template -->
+    <link href="/css/home-admin.css" rel="stylesheet">
+
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">Entorno de Administrador</a>
+  </nav>
+
+  <section class="sectionForUserRole">
+    <h1>Cursos</h1>
+    <span class="user-badge">Usuario: </span>
+    <% if(user){%>
+      <span class="user-name"><%= user.nombre %></span>
+      <br>
+      <span class="user-badge">Rol: </span>
+      <span class="user-role"><%= user.rol %></span>
+    <%}%>
+      <a href="logout" class="btn-logout pl-3 btn btn-danger">Cerrar sesión</a>
+
+  </section>
+
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <td>n°</td>
+              <td>Título</td>
+              <td>Descripcion</td>
+              <td>Acciones</td>
+            </tr>
+          </thead>
+          <tbody>
+            <% if (curso) { %>
+              <% for(var i=0; i < curso.length; i++) { %>
+                <tr>
+                  <td>
+                    <%= (i + 1) %>
+                  </td>
+                  <td>
+                    <%= curso[i].nombre %>
+                  </td>
+                  <!-- <td><%= curso[i].num_lecciones %></td> -->
+                  <td>
+                    <%= curso[i].descripcion %>
+                  </td>
+                  <td>
+                    <a href="/update/<%= curso[i].id_curso%>/<%=curso[i].nombre%>/<%= curso[i].descripcion%>"
+                      class="btn-options btn btn-info">Editar</a>
+                    <a href="/delete/<%= curso[i].id_curso %>" class="btn-options btn btn-danger">Eliminar</a>
+                    <a href="/comments/<%= curso[i].id_curso %>" class="btn-options btn btn-success">Comentarios</a>
+                  </td>
+                </tr>
+                <% } %>
+                  <% } %>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-md-12">
+        <div class="card-body">
+
+          <form action="/add" method="POST">
+            <div class="form-group">
+              <input id="nombre" type="text" name="nombre" placeholder="Título" class="form-control" autofocus>
+            </div>
+            <div class="form-group">
+              <textarea class="mo-form-control form-control" id="descripcion" name="descripcion" placeholder="Agrega una descripcion"></textarea>
+            </div>
+            <div class="form-group">
+              <input id="imagen" type="text" name="imagen" placeholder="Link a imagen" class="form-control">
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+              Guardar información
+            </button>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

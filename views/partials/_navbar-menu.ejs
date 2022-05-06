@@ -6,16 +6,55 @@
                 <img src="/img/iepam-logo-white.png" alt="logo-iepam" height="70">
             </a>
             <ul class="menu">
+                <% var introIndex = -1; for(var i = 0; i < curso.length; i++){
+                    if(curso[i].nombre == "introduccion"){
+                        introIndex = curso[i].id_curso;
+                    }
+                }%>
+
                 <%if(active == "menu"){%>
                     <a href="/" id="item-menu" class="is-active">Menu 🏠</a>
-                    <a href="#" id="item-upload-course" class="not-active">Subir curso 📕</a>
+                    <a href="/juego">Aprende Jugando🎮</a>
+                    <%if(introIndex != -1){%>
+                        <%if(avance){%>
+                            <%var existeAvance = false;
+                            for(var i = 0; i < avance.length; i++){
+                                if(avance[i].id_curso == introIndex){
+                                    existeAvance = true;
+                                }    
+                            }if(existeAvance == true){%>
+                                <a href="/" id="item-upload-course">Subir curso 📕</a>
+                            <%}else{%>
+                                <a href="/" id="item-upload-course" class="not-active">Subir curso 📕</a>
+                            <%}%>
+                        <%}else{%>
+                        <a href="/" id="item-upload-course" class="not-active">Subir curso 📕</a>
+                        <%}%>
+                    <%}%>
                     <a href="/profile-user/<%=user.id_usuario%>" id="item-profile">Perfil 👤</a>
                     <a href="/logout" id="item-logout">Cerrar sesión ❌</a>
                 <%}else if(active == "perfil"){%>
                     <a href="/" id="item-menu" class="">Menu 🏠</a>
-                    <a href="#" id="item-upload-course" class="not-active">Subir curso 📕</a>
+                    <a href="/juego">Aprende Jugando🎮</a>
+                    <%if(introIndex != -1){%>
+                        <%if(avance){%>
+                            <%var existeAvance = false;
+                            for(var i = 0; i < avance.length; i++){
+                                if(avance[i].id_curso == introIndex){
+                                    existeAvance = true;
+                                }    
+                            }if(existeAvance == true){%>
+                                <a href="/" id="item-upload-course">Subir curso 📕</a>
+                            <%}else{%>
+                                <a href="/" id="item-upload-course" class="not-active">Subir curso 📕</a>
+                            <%}%>
+                        <%}else{%>
+                        <a href="/" id="item-upload-course" class="not-active">Subir curso 📕</a>
+                        <%}%>
+                    <%}%>
                     <a href="/profile-user/<%=user.id_usuario%>" id="item-profile" class="is-active">Perfil 👤</a>
                     <a href="/logout" id="item-logout">Cerrar sesión ❌</a>
+               
                 <%}%>
                 
             </ul>
