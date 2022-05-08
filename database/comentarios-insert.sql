@@ -1,0 +1,12 @@
+use iepam;
+INSERT INTO comentario (`id_comentario`,`id_usuario`,`id_leccion`,`comentario`) VALUES (1,2,9,'Comentario de prueba');
+INSERT INTO comentario (`id_comentario`,`id_usuario`,`id_leccion`,`comentario`) VALUES (2,2,6,'Comentario prueba 2');
+INSERT INTO comentario (`id_comentario`,`id_usuario`,`id_leccion`,`comentario`) VALUES (5,2,36,'respecto a los programas que se puedan usar para IOT... Micropython es una alternativa que parece ser muy llamativa ya que usa Python un lenguaje de alto nivel... y se complementa bastante con Raspberry pi... considero q es una muy  buena alternativa respecto a Arduino y C++...');
+INSERT INTO comentario (`id_comentario`,`id_usuario`,`id_leccion`,`comentario`) VALUES (6,7,6,'muy buen curso :)');
+INSERT INTO comentario (`id_comentario`,`id_usuario`,`id_leccion`,`comentario`) VALUES (7,7,6,'Muy buen curso :)');
+INSERT INTO comentario (`id_comentario`,`id_usuario`,`id_leccion`,`comentario`) VALUES (8,7,8,'Interesante \r\n\r\n');
+INSERT INTO comentario (`id_comentario`,`id_usuario`,`id_leccion`,`comentario`) VALUES (9,7,8,'Curioso');
+INSERT INTO comentario (`id_comentario`,`id_usuario`,`id_leccion`,`comentario`) VALUES (13,2,38,'Buenisimo');
+INSERT INTO comentario (`id_comentario`,`id_usuario`,`id_leccion`,`comentario`) VALUES (14,4,31,'Muy buen curso\r\n\r\n');
+INSERT INTO comentario (`id_comentario`,`id_usuario`,`id_leccion`,`comentario`) VALUES (15,7,38,'Excelente informacion\r\n');
+INSERT INTO comentario (`id_comentario`,`id_usuario`,`id_leccion`,`comentario`) VALUES (16,8,39,'Muy buen curso...excelente\r\n');
